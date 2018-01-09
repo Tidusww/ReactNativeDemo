@@ -118,7 +118,7 @@ static NSDictionary *urlMap = nil;
     
     if (viewController.navigationController == nil){
         WWBaseNavigationController *nav = [[WWBaseNavigationController alloc] initWithRootViewController:viewController];
-        nav.navigationBar.barTintColor = APP_THEME_COLOR;
+//        nav.navigationBar.barTintColor = APP_THEME_COLOR;
         dispatch_async(dispatch_get_main_queue(), ^{
             [topViewController presentViewController:nav animated:animated completion:completion];
         });

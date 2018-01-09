@@ -10,4 +10,6 @@
 
 @interface WWBaseViewController : UIViewController
 
+@property (nonatomic, assign, readonly) CGFloat rootViewHeight;
+
 @end

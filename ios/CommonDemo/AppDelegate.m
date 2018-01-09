@@ -42,8 +42,8 @@
 - (BOOL)tabBarController:(WWBaseTabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController index:(NSUInteger)index
 {
     if(index == 1){
-        [WWRouter presentUrl:@"RNViewController" animated:YES completion:nil];
-        return NO;
+//        [WWRouter presentUrl:@"RNViewController" animated:YES completion:nil];
+//        return NO;
     }
     return YES;
 }

@@ -7,31 +7,53 @@
 //
 
 #import "ReactNativeIndexViewController.h"
+#import <React/RCTRootView.h>
 
 @interface ReactNativeIndexViewController ()
+
+@property (nonatomic, strong) RCTRootView *reactRootView;
 
 @end
 
 @implementation ReactNativeIndexViewController
 
+- (void)loadView
+{
+    [super loadView];
+    [self.view addSubview:self.reactRootView];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+//    self.navigationController.navigationBar.translucent = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - getter
+- (RCTRootView *)reactRootView
+{
+    if(!_reactRootView){
+        NSURL *jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.bundle?platform=ios"];
+        NSDictionary *initialProperties = @{ @"scores" : @[
+                                                     @{
+                                                         @"name" : @"Alex",
+                                                         @"value": @"42"
+                                                         },
+                                                     @{
+                                                         @"name" : @"Joel",
+                                                         @"value": @"10"
+                                                         }
+                                                     ]
+                                             };
+        _reactRootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+                                                     moduleName:@"UCLoginPage"
+                                              initialProperties:initialProperties
+                                                  launchOptions:nil];
+        _reactRootView.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.rootViewHeight);
+    }
+    return _reactRootView;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

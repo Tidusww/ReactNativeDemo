@@ -22,7 +22,6 @@
 - (void)loadView
 {
     [super loadView];
-    [self.view addSubview:self.reactRootView];
 }
 
 - (void)viewDidLoad
@@ -32,6 +31,8 @@
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
     self.navigationItem.rightBarButtonItem = self.closeButton;
+    
+    [self.view addSubview:self.reactRootView];
     
 }
 
@@ -51,10 +52,10 @@
                                                     ]
                                          };
         _reactRootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                     moduleName:@"MyReactNativeApp"
+                                                     moduleName:@"UCLoginPage"
                                               initialProperties:initialProperties
                                                   launchOptions:nil];
-        
+        _reactRootView.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.rootViewHeight);
     }
     return _reactRootView;
 }

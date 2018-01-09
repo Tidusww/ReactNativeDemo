@@ -77,7 +77,7 @@ NSString * const kWWBaseTabBarControllerConfigurationKeySelectedImage = @"select
                 NSString *selectedImage = [tabBarConfig ee_stringForKey:kWWBaseTabBarControllerConfigurationKeySelectedImage];
 
                 //navibar样式
-                nav.navigationBar.barTintColor = APP_THEME_COLOR;
+//                nav.navigationBar.barTintColor = APP_THEME_COLOR;
                 
                 //tabbar样式
                 nav.tabBarItem.title = title;

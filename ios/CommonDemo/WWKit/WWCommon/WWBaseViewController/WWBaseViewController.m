@@ -37,14 +37,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //default settings
+    self.navigationController.navigationBar.translucent = YES;
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    self.automaticallyAdjustsScrollViewInsets = YES;
+    
     self.view.backgroundColor = [UIColor whiteColor];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+
+#pragma mark - setter
+/**
+ *  方便获取根视图的高度
+ */
+- (CGFloat)rootViewHeight
+{
+    if(!self.navigationController.navigationBar.translucent || !(self.edgesForExtendedLayout & UIRectEdgeTop)){
+        //导航栏不透明 或者 视图不伸延到顶部，视图都从导航栏的底部开始算，所以减去导航栏和状态栏的高度
+        return SCREEN_HEIGHT - (STATUS_BAR_HEIGHT+NAVIGATION_BAR_HEIGHT+TAB_BAR_HEIGHT);
+    }else {
+        //导航栏透明 且 视图伸延到顶部，视图从屏幕顶部开始算，所以只减去分栏高度
+        return SCREEN_HEIGHT - (TAB_BAR_HEIGHT);
+    }
+}
 
 @end
