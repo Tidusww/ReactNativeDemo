@@ -1,0 +1,5 @@
+node_modules/
+ios/Pods/
+ios/CommonDemo.xcodeproj/xcuserdata/
+ios/CommonDemo.xcodeproj/project.xcworkspace/xcuserdata/
+ios/CommonDemo.xcworkspace/xcuserdata/
