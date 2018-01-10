@@ -46,6 +46,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -57,13 +62,21 @@
  */
 - (CGFloat)rootViewHeight
 {
+    CGFloat rootViewHeight = SCREEN_HEIGHT;
+    
     if(!self.navigationController.navigationBar.translucent || !(self.edgesForExtendedLayout & UIRectEdgeTop)){
         //导航栏不透明 或者 视图不伸延到顶部，视图都从导航栏的底部开始算，所以减去导航栏和状态栏的高度
-        return SCREEN_HEIGHT - (STATUS_BAR_HEIGHT+NAVIGATION_BAR_HEIGHT+TAB_BAR_HEIGHT);
-    }else {
-        //导航栏透明 且 视图伸延到顶部，视图从屏幕顶部开始算，所以只减去分栏高度
-        return SCREEN_HEIGHT - (TAB_BAR_HEIGHT);
+        rootViewHeight = rootViewHeight - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT;
     }
+    
+    if(!(self.edgesForExtendedLayout & UIRectEdgeBottom)){
+        //视图不伸延到底部，减去分栏的高度
+        rootViewHeight = rootViewHeight - TAB_BAR_HEIGHT;
+    }
+    
+    
+    
+    return rootViewHeight;
 }
 
 @end

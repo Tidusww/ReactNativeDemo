@@ -27,7 +27,7 @@
     [super viewDidLoad];
     
 //    self.navigationController.navigationBar.translucent = NO;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.edgesForExtendedLayout = UIRectEdgeLeft | UIRectEdgeRight | UIRectEdgeBottom;
 //    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
